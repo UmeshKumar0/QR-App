@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:scan/scan.dart';
 
 class ScanQrScreenController extends GetxController {
+  final MethodChannel channel = const MethodChannel('chavesgu/scan');
+  final ScanController scanController = ScanController();
   QRViewController? qrViewController;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   RxString qrText = ''.obs;
@@ -41,5 +44,10 @@ class ScanQrScreenController extends GetxController {
     finally{
       await qrViewController?.resumeCamera();
     }
+  }
+
+    Future<String?> parse(String path) async {
+    final String? result = await channel.invokeMethod('parse', path);
+    return result;
   }
 }

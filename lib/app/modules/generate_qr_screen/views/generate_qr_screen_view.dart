@@ -30,9 +30,7 @@ class GenerateQrScreenView extends GetView<GenerateQrScreenController> {
                 ),
                 const Text(
                   'Type here to generate create QR Code',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                  style: TextStyle(fontSize: 15),
                 ),
                 const SizedBox(
                   height: 20,
@@ -49,6 +47,8 @@ class GenerateQrScreenView extends GetView<GenerateQrScreenController> {
                   },
                   maxLines: 4,
                   decoration: const InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
                     border: OutlineInputBorder(),
                     hintText: 'Type here',
                   ),
@@ -92,9 +92,6 @@ class GenerateQrScreenView extends GetView<GenerateQrScreenController> {
                 ),
                 const Text(
                   'QR Code will be generated here',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -141,7 +138,6 @@ class GenerateQrScreenView extends GetView<GenerateQrScreenController> {
                           ),
                           Text(
                             "Save QR Code",
-                            style: TextStyle(color: Colors.white),
                           )
                         ],
                       )),
