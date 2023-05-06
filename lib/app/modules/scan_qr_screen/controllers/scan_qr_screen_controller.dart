@@ -7,7 +7,6 @@ import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:scan/scan.dart';
 
 class ScanQrScreenController extends GetxController {
-  final MethodChannel channel = const MethodChannel('chavesgu/scan');
   final ScanController scanController = ScanController();
   QRViewController? qrViewController;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
@@ -40,14 +39,8 @@ class ScanQrScreenController extends GetxController {
       if (kDebugMode) {
         print(e);
       }
-    }
-    finally{
+    } finally {
       await qrViewController?.resumeCamera();
     }
-  }
-
-    Future<String?> parse(String path) async {
-    final String? result = await channel.invokeMethod('parse', path);
-    return result;
   }
 }

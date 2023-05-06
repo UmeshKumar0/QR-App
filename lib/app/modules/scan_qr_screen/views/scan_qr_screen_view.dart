@@ -134,7 +134,12 @@ class ScanQrScreenView extends GetView<ScanQrScreenController> {
                         padding: const EdgeInsets.all(8.0),
                         child: SelectableText(
                           controller.qrText.value,
-                          style: const TextStyle(),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16.0,
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.normal
+                          ),
                         ),
                       ),
                     ),
