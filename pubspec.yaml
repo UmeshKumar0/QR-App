@@ -16,6 +16,7 @@ dependencies:
   scan: 1.6.0
   image_picker: 0.8.7+4
   animated_text_kit: 4.2.2
+  qr_mobile_vision: 4.1.2
   flutter: 
     sdk: flutter
 

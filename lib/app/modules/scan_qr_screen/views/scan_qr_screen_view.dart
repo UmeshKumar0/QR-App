@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:qr_application/app/common/custom_button.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
+import 'package:qr_mobile_vision/qr_camera.dart';
 
 import '../controllers/scan_qr_screen_controller.dart';
 
@@ -36,10 +37,34 @@ class ScanQrScreenView extends GetView<ScanQrScreenController> {
                       width: 2,
                     ),
                   ),
-                  child: QRView(
-                    key: controller.qrKey,
-                    onQRViewCreated: controller.onQRViewCreated,
-                  ),
+                  child: QrCamera(qrCodeCallback: (code) {
+                    print(code);
+                    controller.qrText.value = code ?? "No Data";
+                  }),
+                  // child: QRView(  #############previous code
+                  //   formatsAllowed: [
+                  //     BarcodeFormat.qrcode,
+                  //     BarcodeFormat.aztec,
+                  //     BarcodeFormat.code128,
+                  //     BarcodeFormat.code39,
+                  //     BarcodeFormat.code93,
+                  //     BarcodeFormat.dataMatrix,
+                  //     BarcodeFormat.ean13,
+                  //     BarcodeFormat.ean8,
+                  //     BarcodeFormat.codabar,
+                  //     BarcodeFormat.itf,
+                  //     BarcodeFormat.maxicode,
+                  //     BarcodeFormat.pdf417,
+                  //     BarcodeFormat.rss14,
+                  //     BarcodeFormat.rssExpanded,
+                  //     BarcodeFormat.unknown,
+                  //     BarcodeFormat.upcA,
+                  //     BarcodeFormat.upcE,
+                  //     BarcodeFormat.upcEanExtension,
+                  //   ],
+                  //   key: controller.qrKey,
+                  //   onQRViewCreated: controller.onQRViewCreated,
+                  // ),
                 ),
               ),
               const SizedBox(
@@ -135,11 +160,10 @@ class ScanQrScreenView extends GetView<ScanQrScreenController> {
                         child: SelectableText(
                           controller.qrText.value,
                           style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16.0,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.normal
-                          ),
+                              color: Colors.black,
+                              fontSize: 16.0,
+                              fontStyle: FontStyle.italic,
+                              fontWeight: FontWeight.normal),
                         ),
                       ),
                     ),
